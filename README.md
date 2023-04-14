@@ -51,17 +51,32 @@ Quantifies specify how many time a preceding element should occur in the text be
 ### Bracket Expressions
 
 In this example `([a-z0-9_\.-]+)` is a bracket expression that matches one or more lower case letters, digits, underscores, dots or hyphens in the username part of an email address.
+This expression `([a-z\.]{2,6})` matches exactly 2 to 6 lowercase letters of dots, which represent the top-level domain (TLD) part of an email address
 
 ### Character Classes
 
+Character Classes are enclosed in `[]` in regex and define a set of characters that can match a single character in the input text.
+
 - `@` Matches the "@" symbol, and `\.` matches a dot character
+- `[a-z0-9_\.-]` Matches any lowercase letter a-z, digits 0-9, underscore, dot or hyphen
+- `[\da-z\.-]` Matches any digit, lowercase letter, dot or hyphen
+- `[a-z\.]` Matches any lowercase letter or dot
 
 ### The OR Operator
 
+The OR operator in regular expressions is denoted by the vertical bar | and allows for matching either one pattern or another. In the given regular expression, the OR operator is used in the character class `([a-z\.]{2,6})` to allow for matching either lowercase letters `(a to z)` or dots `(.)`, and the quantifier `{2,6}` specifies that there must be between 2 to 6 occurrences of the preceding pattern (i.e., lowercase letters or dots). This allows for matching top-level domain (TLD) names that consist of 2 to 6 characters, such as .com, .org, .edu, etc.
+
 ### Flags
+
+This particular example does not contain any flags, however flags are optional parameters that modify the behavior of the regex pattern matching. They are typically added after the closing delimiter of the regular expression and are used to specify options such as case-insensitivity, global matching, multi-line mode, etc. Examples of common flags include `i` for case-insensitive matching, `g` for global matching, and `m` for multi-line mode.
 
 ### Character Escapes
 
+Character escapes are special sequences of characters that have a specific meaning in regular expressions. In this regex, the following character escapes are used:
+
+- `\d` - Represents a digit character (0-9).
+- `.` - Represents a period character. However, it is not used as a character escape in this regex, but as a literal period character, as it is not preceded by a backslash
+
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+This Regex Gist was written by Jesse Hudak for the UC Berkeley EDX Full-Stack Cohort on 4/13/23. You may view my other work [here](https://github.com/jhdk707)
